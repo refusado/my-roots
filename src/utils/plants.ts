@@ -50,12 +50,7 @@ export const plants: Plant[] = [
     name: 'Suculenta',
     description:
       'Ambiente interno e externo, luz indireta a direta, temperatura moderada a quente, cuidado mensal',
-    tags: [
-      'interno e externo',
-      'luz indireta a direta',
-      'moderada a quente',
-      'cuidado mensal',
-    ],
+    tags: ['luz indireta a direta', 'moderada a quente', 'cuidado mensal'],
     image:
       'https://m.media-amazon.com/images/I/71x311i9AWL._AC_UF1000,1000_QL80_.jpg',
   },

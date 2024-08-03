@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { StepWizardChildProps } from 'react-step-wizard';
 import { AnswerHandler, OnboardResponses } from '.';
 import { OnboardProgress } from './Progress';
-import { OnboardOptions } from './Question';
+import { OnboardOptions } from './Options';
 
 interface StepProps extends Partial<StepWizardChildProps> {
   questionIndex: number;

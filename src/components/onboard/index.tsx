@@ -1,23 +1,38 @@
 'use client';
 
-import { questions } from '@/utils/questions';
+import { OnboardQuestion, questions } from '@/utils/questions';
 import { useEffect, useState } from 'react';
 import StepWizard from 'react-step-wizard';
 import { Step } from './Step';
 
+export const steps: OnboardQuestion[] = [
+  {
+    id: 'first',
+    title: 'span for starter step',
+    options: [],
+  },
+  ...questions,
+  {
+    id: 'last',
+    title: 'span for redirect step',
+    options: [],
+  },
+]
+
 export type OnboardResponses = {
   [questionId: string]: number;
 };
+
 export type AnswerHandler = (questionId: string, answer: number) => void;
 
 export function Onboard() {
   const [answers, setAnswers] = useState<OnboardResponses>({});
 
   useEffect(() => {
-    const clientData = localStorage.getItem('clientData');
-    if (!clientData) return;
+    const clientFilters = localStorage.getItem('clientFilters');
+    if (!clientFilters) return;
 
-    setAnswers(JSON.parse(clientData));
+    setAnswers(JSON.parse(clientFilters));
   }, []);
 
   const handleAnswer: AnswerHandler = (id, answer) => {
@@ -26,7 +41,7 @@ export function Onboard() {
       [id]: answer,
     };
 
-    localStorage.setItem('clientData', JSON.stringify(newData));
+    localStorage.setItem('clientFilters', JSON.stringify(newData));
     setAnswers(newData);
   };
 
@@ -41,7 +56,7 @@ export function Onboard() {
           intro: '',
         }}
       >
-        {questions.map((_, index) => (
+        {steps.map((_, index) => (
           <Step
             key={index}
             questionIndex={index}

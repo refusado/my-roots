@@ -1,7 +1,6 @@
-import { questions } from '@/utils/questions';
-import { AnswerHandler, OnboardResponses } from '.';
+import { AnswerHandler, OnboardResponses, steps } from '.';
 
-interface QuestionProps {
+interface OptionsProps {
   questionIndex: number;
   answers: OnboardResponses;
   onAnswer: AnswerHandler;
@@ -15,8 +14,8 @@ export function OnboardOptions({
   onAnswer,
   previousStep,
   nextStep,
-}: QuestionProps) {
-  const { title, options, id } = questions[questionIndex];
+}: OptionsProps) {
+  const { title, options, id } = steps[questionIndex];
 
   return (
     <div className="mb-4 flex flex-col gap-2">
@@ -32,7 +31,7 @@ export function OnboardOptions({
               nextStep();
             }}
           >
-            {opt}
+            {opt.text}
           </button>
         );
       })}
