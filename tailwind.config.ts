@@ -3,6 +3,7 @@ import {
   fontFamily as defaultFontFamily,
   screens as defaultScreens,
 } from 'tailwindcss/defaultTheme';
+import { grass, grassDark, grassA, grassDarkA } from '@radix-ui/colors';
 
 export default {
   content: [
@@ -37,6 +38,13 @@ export default {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'hero-image': "url('/hero-bg.jpg')",
+      },
+      colors: {
+        ...grass,
+        dark: grassDark,
+        ...grassA,
+        darkA: grassDarkA,
       },
     },
   },

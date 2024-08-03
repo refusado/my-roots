@@ -8,6 +8,7 @@ const sans = FontSans({ subsets: ['latin'], variable: '--font-sans' });
 export const metadata: Metadata = {
   title: 'My roots',
   description: "Help the world's environment by making it more green",
+  icons: 'plant.png',
 };
 
 export default function RootLayout({
@@ -17,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={sans.variable}>
-      <body className="overflow-x-hidden overflow-y-scroll bg-zinc-900 text-zinc-50">
+      <body className="bg-grass7 text-dark-grass2 relative size-full overflow-x-hidden overflow-y-scroll">
         <Header />
         {children}
       </body>

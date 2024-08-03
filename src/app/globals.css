@@ -3,14 +3,15 @@
 @tailwind utilities;
 
 :root {
-  @apply antialiased
+  @apply antialiased scroll-smooth
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
-  };
+  }
   .flex-center {
+    display: flex;
     justify-content: center;
     align-items: center;
   }

@@ -12,13 +12,13 @@ export function Header() {
   ];
 
   return (
-    <header id="main-header">
+    <header className="relative z-10 pt-4">
       <nav>
-        <ul className="mx-auto flex w-fit flex-wrap bg-zinc-700">
+        <ul className="mx-auto flex w-full flex-wrap overflow-hidden rounded-full *:flex-1 *:text-center sm:max-w-sm">
           {paths.map(({ title, path }, i) => (
             <li key={i}>
               <Link
-                className={`block border-b px-4 py-4 capitalize hover:bg-white/10 ${currentPath == path ? 'border-blue-500' : 'border-transparent'}`}
+                className={`bg-dark-grass5/15 text-grass4/80 flex h-10 items-center justify-center capitalize backdrop-blur-lg hover:brightness-110 ${currentPath == path ? '' : ''}`}
                 href={path}
               >
                 {title}

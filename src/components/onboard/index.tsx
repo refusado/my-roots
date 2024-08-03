@@ -17,7 +17,7 @@ export const steps: OnboardQuestion[] = [
     title: 'span for redirect step',
     options: [],
   },
-]
+];
 
 export type OnboardResponses = {
   [questionId: string]: number;
@@ -46,7 +46,7 @@ export function Onboard() {
   };
 
   return (
-    <div className="relative w-full max-w-3xl bg-red-800/20">
+    <div id="onboard" className="relative w-full max-w-3xl bg-red-800/20">
       <StepWizard
         transitions={{
           enterLeft: '',
