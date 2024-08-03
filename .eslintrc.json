@@ -1,3 +1,26 @@
 {
-  "extends": "next/core-web-vitals"
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["next/core-web-vitals", "plugin:prettier/recommended"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    "prettier/prettier": [
+      "warn",
+      {
+        "singleQuote": true,
+        "endOfLine": "auto"
+      }
+    ],
+    "arrow-body-style": "off",
+    "prefer-arrow-callback": "off",
+    "@next/next/no-img-element": "off"
+  }
 }
