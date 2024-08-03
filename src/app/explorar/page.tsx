@@ -19,13 +19,13 @@ export default function Explore() {
       <h1 className="my-8 text-2xl">
         Encontre a melhor maneira de tornar o mundo mais verde
       </h1>
-      <ul className="flex flex-wrap">
+      <ul className="mb-20 flex flex-wrap">
         {plants.map(({ name, image }, i) => (
           <li key={i} className="w-1/2 list-none p-2 md:w-1/3 xl:w-1/4 xl:p-4">
             <div className="rounded-xl border border-white/20 p-3">
-              <p className="mb-2 font-semibold">{name}</p>
+              <p className="mb-3 text-xl">{name}</p>
               <img
-                className="block rounded-xl object-cover"
+                className="block aspect-square w-full rounded-xl object-cover"
                 onError={({ currentTarget }) =>
                   (currentTarget.src = defaultImage)
                 }
