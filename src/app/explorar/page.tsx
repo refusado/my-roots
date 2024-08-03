@@ -87,7 +87,7 @@ export default function Explore() {
 
     return (
       <p className="mb-8">
-        <Link href="/" className="text-blue-500 hover:underline">
+        <Link href="/#onboard" className="text-blue-500 hover:underline">
           Complete o onboarding aqui
         </Link>{' '}
         para encontrar as plantas ideias para você

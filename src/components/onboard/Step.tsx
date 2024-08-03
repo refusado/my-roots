@@ -41,9 +41,10 @@ export function Step({
   };
 
   return (
-    <div className="p-4">
+    <div className="py-20">
       <OnboardProgress currentStep={currentStep} totalSteps={totalSteps} />
-      {renderStepContent()}
+
+      <div className="container">{renderStepContent()}</div>
     </div>
   );
 }
@@ -51,10 +52,12 @@ export function Step({
 function FirstStep({ nextStep }: { nextStep: () => void }) {
   return (
     <>
-      <h2>Vamos montar o jardim perfeito para você!</h2>
+      <h2 className="mb-12 text-3xl">
+        Vamos encontrar as plantas perfeitas para você...
+      </h2>
       <button
         onClick={nextStep}
-        className="my-8 block w-fit bg-green-500/50 px-3 py-2 text-center"
+        className="block w-fit rounded-r-full bg-green-500/70 px-8 py-2 text-center font-medium duration-200 hover:brightness-110"
       >
         Começar
       </button>
@@ -65,19 +68,18 @@ function FirstStep({ nextStep }: { nextStep: () => void }) {
 function LastStep({ previousStep }: { previousStep: () => void }) {
   return (
     <>
-      <h2>
-        Você completou o onboarding. Encontre as plantas perfeitas para você!
-      </h2>
+      <h2 className="mb-4 text-3xl">Você completou o onboarding!</h2>
+      <p className="mb-8 text-lg">
+        Agora confira as sugestões específicas que temos para você e encontre a
+        sua planta perfeita
+      </p>
       <Link
         href="/explorar"
-        className="my-8 block bg-green-500/50 py-2 text-center"
+        className="inline-block w-fit rounded-r-full bg-green-500/70 px-8 py-2 text-center font-medium duration-200 hover:brightness-110"
       >
         Explorar
       </Link>
-      <button
-        onClick={previousStep}
-        className="bg-yellow-800/30 px-4 py-2 text-white"
-      >
+      <button onClick={previousStep} className="mx-6 px-4 py-2 hover:underline">
         Voltar
       </button>
     </>

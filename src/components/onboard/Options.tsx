@@ -18,35 +18,37 @@ export function OnboardOptions({
   const { title, options, id } = steps[questionIndex];
 
   return (
-    <div className="mb-4 flex flex-col gap-2">
-      <h2 className="mb-4 text-xl">{title}</h2>
-      {options.map((opt, i) => {
-        const isSelected = answers[id] == i;
-        return (
-          <button
-            key={i}
-            className={`px-4 py-2 text-white ${isSelected ? 'bg-blue-800/50' : 'bg-blue-800/30'}`}
-            onClick={() => {
-              onAnswer(id, i);
-              nextStep();
-            }}
-          >
-            {opt.text}
-          </button>
-        );
-      })}
+    <div className="flex flex-col lg:w-9/12">
+      <h2 className="mb-6 text-lg font-bold">{title}</h2>
+      <div className="mb-10 flex flex-wrap gap-2">
+        {options.map((opt, i) => {
+          const isSelected = answers[id] == i;
+          return (
+            <button
+              key={i}
+              className={`text-grass12 border-grass11/40 bg-grass6/35 rounded-full border px-5 py-1.5 text-sm duration-200 hover:brightness-110 ${isSelected ? 'cursor-default opacity-70' : ''}`}
+              onClick={() => {
+                onAnswer(id, i);
+                nextStep();
+              }}
+            >
+              {opt.text}
+            </button>
+          );
+        })}
+      </div>
       <div className="flex gap-2">
         <button
-          onClick={() => previousStep()}
-          className="bg-yellow-800/30 px-4 py-2 text-white"
+          onClick={nextStep}
+          className="inline-block rounded-r-full bg-yellow-300/30 px-8 py-2 hover:bg-yellow-300/40"
         >
-          Voltar
+          Pular
         </button>
         <button
-          onClick={() => nextStep()}
-          className="bg-yellow-800/30 px-4 py-2 text-white"
+          onClick={previousStep}
+          className="mx-6 inline-block px-4 py-2 hover:underline"
         >
-          Próxima
+          Voltar
         </button>
       </div>
     </div>

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Montserrat as FontSans } from 'next/font/google';
 import './globals.css';
 import { Header } from '../components/Header';
+import { Footer } from '@/components/Footer';
 
 const sans = FontSans({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -21,6 +22,7 @@ export default function RootLayout({
       <body className="bg-grass7 text-dark-grass2 relative size-full overflow-x-hidden overflow-y-scroll">
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

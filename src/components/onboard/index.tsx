@@ -46,7 +46,7 @@ export function Onboard() {
   };
 
   return (
-    <div id="onboard" className="relative w-full max-w-3xl bg-red-800/20">
+    <div id="onboard">
       <StepWizard
         transitions={{
           enterLeft: '',
