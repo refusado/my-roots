@@ -1,7 +1,7 @@
 'use client';
 
 import { questions } from '@/utils/questions';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import StepWizard from 'react-step-wizard';
 import { Step } from './Step';
 
@@ -13,11 +13,21 @@ export type AnswerHandler = (questionId: string, answer: number) => void;
 export function Onboard() {
   const [answers, setAnswers] = useState<OnboardResponses>({});
 
+  useEffect(() => {
+    const clientData = localStorage.getItem('clientData');
+    if (!clientData) return;
+
+    setAnswers(JSON.parse(clientData));
+  }, []);
+
   const handleAnswer: AnswerHandler = (id, answer) => {
-    setAnswers({
+    const newData = {
       ...answers,
       [id]: answer,
-    });
+    };
+
+    localStorage.setItem('clientData', JSON.stringify(newData));
+    setAnswers(newData);
   };
 
   return (
@@ -40,10 +50,6 @@ export function Onboard() {
           />
         ))}
       </StepWizard>
-      <div className="my-20">
-        <h2>Respostas Selecionadas:</h2>
-        <pre>{JSON.stringify(answers, null, 2)}</pre>
-      </div>
     </div>
   );
 }
