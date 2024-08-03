@@ -8,7 +8,7 @@ export function Header() {
 
   const paths = [
     { title: 'início', path: '/' },
-    { title: 'sobre', path: '/sobre' },
+    { title: 'explorar', path: '/explorar' },
   ];
 
   return (
