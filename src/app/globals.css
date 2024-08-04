@@ -16,3 +16,17 @@
     align-items: center;
   }
 }
+
+.hero-fade {
+  animation: fade-in forwards 1000ms 
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0
+  }
+
+  100% {
+    opacity: 100
+  }
+}

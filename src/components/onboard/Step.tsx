@@ -4,6 +4,8 @@ import { AnswerHandler, OnboardResponses } from '.';
 import { OnboardProgress } from './Progress';
 import { OnboardOptions } from './Options';
 import { CgArrowTopRight } from 'react-icons/cg';
+import { RiArrowRightDoubleFill } from 'react-icons/ri';
+import { BsArrowUpRight } from 'react-icons/bs';
 
 interface StepProps extends Partial<StepWizardChildProps> {
   questionIndex: number;
@@ -63,10 +65,11 @@ function FirstStep({ nextStep }: { nextStep: () => void }) {
       <img src="search.svg" alt="Searching items" className="mb-12 max-w-xs" />
       <button
         onClick={nextStep}
-        className="relative inline-block w-fit rounded-r-full bg-green-500/80 px-8 py-2 text-center font-medium duration-200 hover:brightness-95"
+        className="group relative inline-block w-fit rounded-r-full bg-green-500/80 px-8 py-2 text-center text-lg font-medium shadow-md shadow-green-400/50 duration-200 hover:brightness-110"
       >
-        <span className="absolute right-full top-0 h-full w-screen bg-inherit"></span>
+        <span className="absolute right-full top-0 h-full w-screen bg-inherit shadow-md shadow-green-400/50"></span>
         Começar
+        <RiArrowRightDoubleFill className="ml-2 inline-block size-5 duration-200 group-hover:translate-x-1" />
       </button>
     </>
   );
@@ -83,14 +86,15 @@ function LastStep({ previousStep }: { previousStep: () => void }) {
       <img
         src="confirmed.svg"
         alt="Searching items"
-        className="mb-12 max-w-sm"
+        className="mb-12 max-w-sm opacity-90"
       />
       <Link
         href="/explorar"
-        className="relative inline-block w-fit rounded-r-full bg-green-500/80 px-8 py-2 text-center font-medium duration-200 hover:brightness-95"
+        className="group relative inline-block w-fit rounded-r-full bg-green-500/80 px-8 py-2 text-center text-lg font-medium shadow-md shadow-green-400/50 duration-200 hover:brightness-110"
       >
-        <span className="absolute right-full top-0 h-full w-screen bg-inherit"></span>
-        Explorar <CgArrowTopRight className="inline-block size-5" />
+        <span className="absolute right-full top-0 h-full w-screen bg-inherit shadow-md shadow-green-400/50"></span>
+        Explorar{' '}
+        <BsArrowUpRight className="ml-2 inline-block size-4 duration-200 group-hover:-translate-y-1 group-hover:translate-x-1" />
       </Link>
       <button onClick={previousStep} className="mx-6 px-4 py-2 hover:underline">
         Voltar
