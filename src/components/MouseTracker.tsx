@@ -43,12 +43,12 @@ export function MouseTrackerProvider({ children }: { children: ReactNode }) {
   const [background, setBackground] = useState('');
   const [smallBg, setSmallBg] = useState('');
   const [filter, setFilter] = useState('brightness(1.25)');
-  const [increased, setIncreased] = useState(60);
+  const [increased, setIncreased] = useState(45);
   const [zIndex, setZIndex] = useState(50);
 
   const increase = () => setIncreased(100);
   const superIncrease = () => setIncreased(200);
-  const decrease = () => setIncreased(60);
+  const decrease = () => setIncreased(45);
 
   const size = increased;
 

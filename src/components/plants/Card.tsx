@@ -29,7 +29,7 @@ export function PlantCard({
       onMouseLeave={decrease}
       onClick={onClick}
       className={twMerge(
-        'relative flex flex-col rounded-2xl border border-white/20 p-3 text-start',
+        'relative flex flex-col rounded-2xl border border-black p-3 text-start',
         className,
       )}
     >
@@ -46,7 +46,7 @@ export function PlantCard({
       <ul className="-mx-1">
         {tags.map((t, i) => (
           <li
-            className="m-1 inline-block cursor-default rounded-full border border-green-300/50 bg-green-800/30 px-3 py-1 text-sm"
+            className="m-1 inline-block cursor-default rounded-full border border-yellow-900/30 bg-yellow-500/15 px-3 py-1 text-sm"
             key={i}
           >
             {t}

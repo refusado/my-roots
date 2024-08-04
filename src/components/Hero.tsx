@@ -10,13 +10,14 @@ export function Hero() {
   return (
     <section
       onMouseEnter={() => setSmallBg('white')}
+      onMouseLeave={() => setSmallBg('black')}
       className="relative -mt-[4.4rem] text-grass1/90"
     >
       <div className="absolute inset-0 -z-10 bg-black"></div>
       <div className="hero-fade">
         <div className="absolute inset-0 -z-10 bg-green-800 bg-hero-image bg-cover opacity-40 backdrop-brightness-90"></div>
       </div>
-      <div className="container relative flex min-h-screen flex-col items-center justify-evenly pt-20 text-center">
+      <div className="container relative flex min-h-screen flex-col items-center justify-evenly px-2 pt-20 text-center">
         <motion.h1
           initial={{
             opacity: 0,
@@ -30,12 +31,12 @@ export function Hero() {
               duration: 0.5,
             },
           }}
-          className="w-fit max-w-4xl cursor-default font-serif text-6xl"
+          className="cursor-defaultfont-serif w-fit max-w-4xl text-4xl md:text-6xl"
           onMouseEnter={superIncrease}
           onMouseLeave={decrease}
         >
           Sabia que{' '}
-          <span className="border-b-[3px] border-yellow-500/60 bg-gradient-to-t from-yellow-100 via-green-50 to-green-50 bg-clip-text text-transparent">
+          <span className="border-b-2 border-yellow-500/60 bg-gradient-to-t from-yellow-100 via-green-50 to-green-50 bg-clip-text text-transparent md:border-b-[3px]">
             você pode fazer a diferença
           </span>{' '}
           no combate ao aquecimento global?
@@ -53,7 +54,7 @@ export function Hero() {
               duration: 0.5,
             },
           }}
-          className="w-fit max-w-2xl text-lg"
+          className="w-fit max-w-2xl px-2 text-lg"
         >
           <span className="block rounded-full bg-amber-950/30">
             Diminua o impacto das crises climáticas tornando o mundo mais verde!

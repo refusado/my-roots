@@ -9,7 +9,7 @@ export default function Home() {
         <img
           src="./lines.svg"
           alt="lines"
-          className="absolute bottom-0 right-0 block h-96 w-4/6 opacity-30"
+          className="absolute bottom-0 right-0 block h-96 w-4/6 opacity-60"
         />
         <Onboard />
       </section>

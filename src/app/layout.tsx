@@ -25,13 +25,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${sans.variable} ${serif.variable}`}>
-      <MouseTrackerProvider>
-        <body className="relative size-full overflow-x-hidden overflow-y-scroll bg-grass6/80 text-dark-grass2">
+      <body className="relative size-full overflow-x-hidden overflow-y-scroll bg-grass4/70 text-dark-grass2">
+        <MouseTrackerProvider>
           <Header />
           {children}
           <Footer />
-        </body>
-      </MouseTrackerProvider>
+        </MouseTrackerProvider>
+      </body>
     </html>
   );
 }

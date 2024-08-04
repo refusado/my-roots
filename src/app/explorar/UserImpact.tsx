@@ -7,6 +7,8 @@ import {
   getTotalTemperatureImpact,
 } from '@/utils/calculate-impact';
 import { TbPlant } from 'react-icons/tb';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useMouseTracker } from '@/components/MouseTracker';
 
 export function UserImpact() {
   const { storedPlants, removePlant } = useContext(savesContext);
@@ -16,6 +18,7 @@ export function UserImpact() {
     oxygen: 0,
     humidity: 0,
   });
+  const { increase, decrease } = useMouseTracker();
 
   useEffect(() => {
     const temperatureValues: number[] = [];
@@ -40,13 +43,24 @@ export function UserImpact() {
 
   if (!storedPlants.length)
     return (
-      <div className="text-center">
+      <motion.div
+        initial={{
+          opacity: 0,
+        }}
+        animate={{
+          opacity: 1,
+          transition: {
+            duration: 0.5,
+          },
+        }}
+        className="text-center"
+      >
         <h2 className="mx-4 py-32 text-xl">
           Selecione as suas plantas para descobrir qual está sendo o seu impacto
           no meio ambiente
         </h2>
         <TbPlant className="inline size-40 opacity-10" />
-      </div>
+      </motion.div>
     );
 
   function DisplayInfo({
@@ -69,12 +83,39 @@ export function UserImpact() {
 
   return (
     <div className="px-4 text-end">
-      <h2 className="mb-12 text-2xl font-medium lg:py-6">
+      <motion.h2
+        initial={{
+          opacity: 0,
+          y: 15,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          transition: {
+            duration: 0.5,
+          },
+        }}
+        className="mb-12 text-2xl font-medium lg:py-6"
+      >
         <span className="bg-amber-800/5">
           Acompanhe o seu impacto no meio ambiente
         </span>
-      </h2>
-      <section className="mb-16 flex flex-col gap-8">
+      </motion.h2>
+      <motion.section
+        initial={{
+          opacity: 0,
+          y: 15,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          transition: {
+            delay: 0.2,
+            duration: 0.5,
+          },
+        }}
+        className="mb-16 flex flex-col gap-8"
+      >
         <DisplayInfo title="Gás carbônico absorvido">
           {impactData.cO2.toFixed(2)}Kg<span className="text-xl">/ ano</span>
         </DisplayInfo>
@@ -92,27 +133,77 @@ export function UserImpact() {
           {impactData.humidity.toFixed(2)}
           <span className="text-2xl">%</span>
         </DisplayInfo>
-      </section>
-      <section className="text-center">
+      </motion.section>
+      <motion.section
+        initial={{
+          opacity: 0,
+          y: 15,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          transition: {
+            delay: 0.4,
+            duration: 0.5,
+          },
+        }}
+        className="text-center"
+      >
         <h3 className="text-lg font-bold">Plantas selecionadas</h3>
         <p className="mb-6 text-xs opacity-80">(Clique nela para remover)</p>
         <ul className="flex flex-col gap-4">
-          {storedPlants.map((plant) => {
-            const { id, name, description } = plant;
-            return (
-              <li className="text-sm" key={id}>
-                <button
-                  className="rounded-xl border border-amber-900/20 bg-green-800/10 p-3 text-start shadow-md shadow-green-900/10 duration-200 hover:shadow-green-900/20"
-                  onClick={() => removePlant(plant)}
+          <AnimatePresence>
+            {storedPlants.map((plant) => {
+              const { id, name, description } = plant;
+              return (
+                <motion.li
+                  initial={{
+                    opacity: 0,
+                    x: -20,
+                    margin: 0,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    x: 0,
+                    transition: {
+                      duration: 0.75,
+                      type: 'spring',
+                    },
+                  }}
+                  exit={{
+                    opacity: 0,
+                    x: -22,
+                    height: 0,
+                    marginTop: -16,
+                    transition: {
+                      duration: 0.75,
+                      type: 'spring',
+                      height: {
+                        delay: 0.15,
+                      },
+                    },
+                  }}
+                  className="text-sm"
+                  key={id}
                 >
-                  <h4 className="font-bold">{name}</h4>
-                  <p>{description}</p>
-                </button>
-              </li>
-            );
-          })}
+                  <button
+                    onMouseEnter={increase}
+                    onMouseLeave={decrease}
+                    onClick={() => {
+                      removePlant(plant);
+                      decrease();
+                    }}
+                    className="w-full rounded-xl border border-amber-900/20 bg-green-800/10 p-3 text-start shadow-md shadow-green-900/10 duration-200 hover:shadow-green-900/20"
+                  >
+                    <h4 className="font-bold">{name}</h4>
+                    <p>{description}</p>
+                  </button>
+                </motion.li>
+              );
+            })}
+          </AnimatePresence>
         </ul>
-      </section>
+      </motion.section>
     </div>
   );
 }

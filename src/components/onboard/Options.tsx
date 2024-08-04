@@ -27,7 +27,7 @@ export function OnboardOptions({
           return (
             <button
               key={i}
-              className={`rounded-full border px-5 py-1.5 text-grass12 duration-200 ${isSelected ? 'cursor-default border-black/15' : 'border-amber-800/30 bg-amber-700/5 hover:bg-amber-800/10'}`}
+              className={`rounded-full border px-5 py-1.5 text-start text-sm text-grass12 duration-200 md:text-base ${isSelected ? 'cursor-default border-black/15' : 'border-amber-800/30 bg-amber-700/5 hover:bg-amber-800/10'}`}
               onClick={() => {
                 onAnswer(id, i);
                 nextStep();
@@ -47,7 +47,7 @@ export function OnboardOptions({
         </button>
         <button
           onClick={nextStep}
-          className="inline-block rounded-r-full px-8 py-2 text-amber-800/80 hover:underline"
+          className="inline-block rounded-r-full px-6 py-2 text-amber-800/80 hover:underline md:px-8"
         >
           Pular
         </button>

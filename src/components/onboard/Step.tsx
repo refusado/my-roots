@@ -45,7 +45,7 @@ export function Step({
   };
 
   return (
-    <div className="py-28">
+    <div className="px-3 py-28">
       <OnboardProgress currentStep={currentStep} totalSteps={totalSteps} />
 
       <div className="container">{renderStepContent()}</div>
@@ -83,7 +83,7 @@ function FirstStep({ nextStep }: { nextStep: () => void }) {
 }
 
 function LastStep({ previousStep }: { previousStep: () => void }) {
-  const { increase, decrease, setFilter } = useMouseTracker();
+  const { increase, decrease, setFilter, setBackground } = useMouseTracker();
   return (
     <>
       <h2 className="mb-4 text-3xl">Tudo pronto, já te conhecemos!</h2>
@@ -102,6 +102,7 @@ function LastStep({ previousStep }: { previousStep: () => void }) {
         onClick={() => {
           decrease();
           setFilter('brightness(1.25)');
+          setBackground('');
         }}
         href="/explorar"
         className="group relative ml-16 inline-block w-fit rounded-r-full bg-green-500/80 px-8 py-2 text-center text-lg font-medium shadow-md shadow-green-400/50 duration-200 hover:brightness-110"

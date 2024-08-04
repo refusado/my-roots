@@ -33,12 +33,15 @@ export function Explorer({ userTags }: { userTags: string[] }) {
 
   return (
     <>
-      <h2 className="text-xl">Recomendações: </h2>
+      <h2 className="mb-2 text-2xl">Recomendadas para você</h2>
       <PlantsList plants={recommendedPlants} highlight />
 
       {notRecommendedPlants.length && (
         <>
-          <h2 className="text-2xl">Outras plantas: </h2>
+          <hr className="mb-8 h-[2px] bg-amber-900/60" />
+          <h2 className="mb-2 text-2xl">
+            Outras plantas que você pode gostar{' '}
+          </h2>
           <PlantsList plants={notRecommendedPlants} />
         </>
       )}
