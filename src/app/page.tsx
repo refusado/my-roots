@@ -17,7 +17,7 @@ export default function Home() {
           </h1>
           <p className="w-fit max-w-2xl text-lg">
             <span className="block rounded-full bg-darkA-grassA3">
-              Diminuia o impacto das crises climáticas tornando o mundo mais
+              Diminua o impacto das crises climáticas tornando o mundo mais
               verde!
             </span>
             Nós te ajudamos a construir um jardim em casa hoje mesmo, seja com
