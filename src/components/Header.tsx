@@ -13,12 +13,14 @@ export function Header() {
 
   return (
     <header className="relative z-10 pt-6">
-      <nav>
-        <ul className="border-grass4/60 mx-auto mt-1 flex w-full flex-wrap overflow-hidden rounded-full border-[1px] *:flex-1 *:text-center sm:max-w-sm">
+      <nav
+        className={`mx-auto mt-1 block w-full overflow-hidden rounded-full border-[1px] border-grass4/40 sm:max-w-sm ${currentPath == '/explorar' ? 'bg-dark-grass4/40' : ''}`}
+      >
+        <ul className="flex flex-wrap *:flex-1 *:text-center">
           {paths.map(({ title, path }, i) => (
             <li key={i}>
               <Link
-                className={`bg-dark-grass5/15 text-grass4/80 flex h-10 select-none items-center justify-center capitalize backdrop-blur-lg hover:brightness-125 ${currentPath == path ? 'cursor-deafult pointer-events-none' : ''}`}
+                className={`flex h-10 select-none items-center justify-center bg-dark-grass5/15 capitalize text-grass2/90 backdrop-blur-sm hover:brightness-125 ${currentPath == path ? 'cursor-deafult pointer-events-none' : ''}`}
                 href={path}
               >
                 {title}

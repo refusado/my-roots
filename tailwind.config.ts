@@ -22,6 +22,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['var(--font-sans)', ...defaultFontFamily.sans],
+        serif: ['var(--font-serif)', ...defaultFontFamily.serif],
       },
       aspectRatio: {
         square: '1 / 1',

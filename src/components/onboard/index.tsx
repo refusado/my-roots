@@ -14,7 +14,7 @@ export const steps: OnboardQuestion[] = [
   ...questions,
   {
     id: 'last',
-    title: 'span for redirect step',
+    title: 'span for final step',
     options: [],
   },
 ];

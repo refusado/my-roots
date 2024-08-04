@@ -1,10 +1,15 @@
 import type { Metadata } from 'next';
 import { Montserrat as FontSans } from 'next/font/google';
+import localFont from 'next/font/local';
 import './globals.css';
 import { Header } from '../components/Header';
 import { Footer } from '@/components/Footer';
 
 const sans = FontSans({ subsets: ['latin'], variable: '--font-sans' });
+const serif = localFont({
+  src: '../../public/PPFragment-GlareLight.otf',
+  variable: '--font-serif',
+});
 
 export const metadata: Metadata = {
   title: 'My roots',
@@ -18,8 +23,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={sans.variable}>
-      <body className="bg-grass7 text-dark-grass2 relative size-full overflow-x-hidden overflow-y-scroll">
+    <html lang="en" className={`${sans.variable} ${serif.variable}`}>
+      <body className="relative size-full overflow-x-hidden overflow-y-scroll bg-grass6/80 text-dark-grass2">
         <Header />
         {children}
         <Footer />

@@ -1,4 +1,5 @@
 import { AnswerHandler, OnboardResponses, steps } from '.';
+import { CgArrowLeft } from 'react-icons/cg';
 
 interface OptionsProps {
   questionIndex: number;
@@ -26,7 +27,7 @@ export function OnboardOptions({
           return (
             <button
               key={i}
-              className={`text-grass12 border-grass11/40 bg-grass6/35 rounded-full border px-5 py-1.5 text-sm duration-200 hover:brightness-110 ${isSelected ? 'cursor-default opacity-70' : ''}`}
+              className={`rounded-full border px-5 py-1.5 text-grass12 duration-200 ${isSelected ? 'cursor-default border-black/20' : 'border-yellow-600/40 bg-yellow-500/10 hover:bg-yellow-500/15'}`}
               onClick={() => {
                 onAnswer(id, i);
                 nextStep();
@@ -39,16 +40,16 @@ export function OnboardOptions({
       </div>
       <div className="flex gap-2">
         <button
-          onClick={nextStep}
-          className="inline-block rounded-r-full bg-yellow-300/30 px-8 py-2 hover:bg-yellow-300/40"
+          onClick={previousStep}
+          className="group mr-4 inline-block px-4 py-2"
         >
-          Pular
+          <CgArrowLeft className="size-5 duration-200 group-hover:text-yellow-800/80" />
         </button>
         <button
-          onClick={previousStep}
-          className="mx-6 inline-block px-4 py-2 hover:underline"
+          onClick={nextStep}
+          className="inline-block rounded-r-full px-8 py-2 text-yellow-800/80 hover:underline"
         >
-          Voltar
+          Pular
         </button>
       </div>
     </div>

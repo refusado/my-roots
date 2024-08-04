@@ -3,8 +3,8 @@ import { OnboardResponses } from '@/components/onboard';
 import { type Plant, plants } from '@/utils/plants';
 import { questions } from '@/utils/questions';
 import { PlantsList } from './PlantsList';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { Preferences } from './Preferences';
 
 export default function Explore() {
   const [filters, setFilters] = useState<OnboardResponses | null>(null);
@@ -57,55 +57,22 @@ export default function Explore() {
     localStorage.removeItem('clientFilters');
   }
 
-  const renderPreferences = () => {
-    console.log(userTags);
-
-    if (filters)
-      return (
-        <>
-          <p className="mb-3">Suas preferências: </p>
-          <ul className="mb-10 flex flex-wrap gap-2">
-            <li>
-              <button
-                className="flex cursor-pointer items-center gap-1 rounded-full border border-white/20 bg-white/5 px-4 py-1"
-                onClick={clearPreferences}
-              >
-                <span className="text-xs">✖</span> Limpar
-              </button>
-            </li>
-            {userTags.map((tag, i) => (
-              <li
-                key={i}
-                className="cursor-default rounded-full border border-white/20 px-4 py-1"
-              >
-                {tag}
-              </li>
-            ))}
-          </ul>
-        </>
-      );
-
-    return (
-      <p className="mb-8">
-        <Link href="/#onboard" className="text-blue-500 hover:underline">
-          Complete o onboarding aqui
-        </Link>{' '}
-        para encontrar as plantas ideias para você
-      </p>
-    );
-  };
-
   return (
-    <main className="container">
-      <h1 className="my-8 text-2xl">
-        Encontre a melhor maneira de tornar o mundo mais verde
+    <main className="container py-16">
+      <h1 className="my-8 font-serif text-5xl sm:w-8/12">
+        Escolha a sua próxima contribuição contra o impacto das crises
+        climáticas
       </h1>
-      {renderPreferences()}
+      <Preferences
+        filters={filters}
+        clearPreferences={clearPreferences}
+        userTags={userTags}
+      />
 
       {recommendedPlants.length ? (
         <>
           <h2 className="text-xl">Recomendações: </h2>
-          <PlantsList plants={recommendedPlants} />
+          <PlantsList plants={recommendedPlants} highlight />
 
           {notRecommendedPlants.length && (
             <>
