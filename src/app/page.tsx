@@ -4,7 +4,7 @@ import { CgChevronDoubleDown } from 'react-icons/cg';
 export default function Home() {
   return (
     <main className="">
-      <section className="relative -mt-[4.35rem] text-grass1/90">
+      <section className="relative -mt-[4.4rem] text-grass1/90">
         <div className="absolute inset-0 -z-10 bg-black"></div>
         <div className="absolute inset-0 -z-10 bg-green-800 bg-hero-image bg-cover opacity-40 backdrop-brightness-90"></div>
         <div className="container relative flex min-h-screen flex-col items-center justify-evenly pt-20 text-center">

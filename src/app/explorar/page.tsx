@@ -1,16 +1,21 @@
 'use client';
+
 import { OnboardResponses } from '@/components/onboard';
-import { type Plant, plants } from '@/utils/plants';
 import { questions } from '@/utils/questions';
-import { PlantsList } from './PlantsList';
 import { useEffect, useState } from 'react';
 import { Preferences } from './Preferences';
+import { UserSaves } from './UserSaves';
+import { Explorer } from '@/components/plants/Explorer';
 
 export default function Explore() {
   const [filters, setFilters] = useState<OnboardResponses | null>(null);
   const [userTags, setUserTags] = useState<string[]>([]);
-  const [recommendedPlants, setRecommendedPlants] = useState<Plant[]>([]);
-  const [notRecommendedPlants, setNotRecommendedPlants] = useState<Plant[]>([]);
+
+  useEffect(() => {
+    const clientFilters = localStorage.getItem('clientFilters');
+
+    if (clientFilters) setFilters(JSON.parse(clientFilters));
+  }, []);
 
   useEffect(() => {
     if (!filters) return setUserTags([]);
@@ -23,67 +28,32 @@ export default function Explore() {
     });
   }, [filters]);
 
-  useEffect(() => {
-    setRecommendedPlants([]);
-    setNotRecommendedPlants([]);
-
-    if (!userTags) {
-      return;
-    }
-
-    plants.forEach((plant) => {
-      let match = false;
-
-      plant.tags.forEach((tag) => {
-        if (userTags.includes(tag)) match = true;
-      });
-
-      if (match) {
-        setRecommendedPlants((prev) => [...prev, plant]);
-      } else {
-        setNotRecommendedPlants((prev) => [...prev, plant]);
-      }
-    });
-  }, [userTags]);
-
-  useEffect(() => {
-    const clientFilters = localStorage.getItem('clientFilters');
-
-    if (clientFilters) setFilters(JSON.parse(clientFilters));
-  }, []);
-
   function clearPreferences() {
     setFilters(null);
     localStorage.removeItem('clientFilters');
   }
 
   return (
-    <main className="container py-16">
-      <h1 className="my-8 font-serif text-5xl sm:w-8/12">
-        Escolha a sua próxima contribuição contra o impacto das crises
-        climáticas
-      </h1>
-      <Preferences
-        filters={filters}
-        clearPreferences={clearPreferences}
-        userTags={userTags}
-      />
-
-      {recommendedPlants.length ? (
-        <>
-          <h2 className="text-xl">Recomendações: </h2>
-          <PlantsList plants={recommendedPlants} highlight />
-
-          {notRecommendedPlants.length && (
-            <>
-              <h2 className="text-2xl">Outras plantas: </h2>
-              <PlantsList plants={notRecommendedPlants} />
-            </>
-          )}
-        </>
-      ) : (
-        <PlantsList plants={plants} />
-      )}
-    </main>
+    <div className="container flex bg-white">
+      <main className="w-full">
+        <h1 className="my-8 bg-yellow-500 font-serif text-5xl">
+          Escolha a sua próxima contribuição contra o impacto das crises
+          climáticas
+        </h1>
+        <section className="bg-red-500">
+          <Preferences
+            filters={filters}
+            clearPreferences={clearPreferences}
+            userTags={userTags}
+          />
+        </section>
+        <section className="bg-blue-500">
+          <Explorer userTags={userTags} />
+        </section>
+      </main>
+      <section className="h-screen w-4/12 bg-purple-500">
+        <UserSaves />
+      </section>
+    </div>
   );
 }
