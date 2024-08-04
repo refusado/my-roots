@@ -4,7 +4,12 @@ export type Plant = {
   description?: string;
   tags: string[];
   image?: string;
+  cO2absorption: number; // Média de absorção anual de CO2 por anul (kKg)
+  oxygen?: number; // Média de impacto na produção de oxi^genio (Kg)
+  temperature?: number; // Média de impacto na redução da temperatura (°C)
+  humidity?: number; // Média de impacto no aumento da umidade (%)
 };
+
 export const plants: Plant[] = [
   {
     id: '0',
@@ -13,6 +18,7 @@ export const plants: Plant[] = [
       'Ambiente interno, luz indireta a alta, temperatura quente, cuidado semanal',
     tags: ['interno', 'luz indireta a alta', 'quente', 'cuidado semanal'],
     image: 'https://m.media-amazon.com/images/I/71UvcN6ET8L._AC_SX679_.jpg',
+    cO2absorption: 0.3,
   },
   {
     id: '1',
@@ -22,6 +28,7 @@ export const plants: Plant[] = [
     tags: ['interno', 'luz baixa', 'moderada', 'cuidado semanal'],
     image:
       'https://m.media-amazon.com/images/I/71x311i9AWL._AC_UF1000,1000_QL80_.jpg',
+    cO2absorption: 0.2,
   },
   {
     id: '2',
@@ -31,6 +38,7 @@ export const plants: Plant[] = [
     tags: ['externo', 'sol direto', 'quente', 'cuidado mensal'],
     image:
       'https://m.media-amazon.com/images/I/71x311i9AWL._AC_UF1000,1000_QL80_.jpg',
+    cO2absorption: 0.1,
   },
   {
     id: '3',
@@ -40,6 +48,7 @@ export const plants: Plant[] = [
     tags: ['interno', 'luz indireta', 'moderada', 'cuidado semanal'],
     image:
       'https://m.media-amazon.com/images/I/71x311i9AWL._AC_UF1000,1000_QL80_.jpg',
+    cO2absorption: 0.4,
   },
   {
     id: '4',
@@ -49,6 +58,7 @@ export const plants: Plant[] = [
     tags: ['externo', 'sol direto', 'quente', 'cuidado semanal'],
     image:
       'https://m.media-amazon.com/images/I/71x311i9AWL._AC_UF1000,1000_QL80_.jpg',
+    cO2absorption: 0.3,
   },
   {
     id: '5',
@@ -58,6 +68,7 @@ export const plants: Plant[] = [
     tags: ['interno', 'luz indireta', 'fria', 'cuidado semanal'],
     image:
       'https://m.media-amazon.com/images/I/71x311i9AWL._AC_UF1000,1000_QL80_.jpg',
+    cO2absorption: 0.2,
   },
   {
     id: '6',
@@ -67,6 +78,7 @@ export const plants: Plant[] = [
     tags: ['luz indireta a direta', 'moderada a quente', 'cuidado mensal'],
     image:
       'https://m.media-amazon.com/images/I/71x311i9AWL._AC_UF1000,1000_QL80_.jpg',
+    cO2absorption: 0.1,
   },
   {
     id: '7',
@@ -76,5 +88,6 @@ export const plants: Plant[] = [
     tags: ['interno', 'luz baixa', 'moderada', 'cuidado mensal'],
     image:
       'https://m.media-amazon.com/images/I/71x311i9AWL._AC_UF1000,1000_QL80_.jpg',
+    cO2absorption: 0.2,
   },
 ];

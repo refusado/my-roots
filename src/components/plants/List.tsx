@@ -1,5 +1,7 @@
 import { Plant } from '@/utils/plants';
 import { PlantCard } from './Card';
+import { useContext } from 'react';
+import { savesContext } from '@/app/explorar/saves-context';
 
 export function PlantsList({
   plants,
@@ -8,23 +10,7 @@ export function PlantsList({
   plants: Plant[];
   highlight?: boolean;
 }) {
-  function saveClientPlant(plant: Plant) {
-    const clientPlants = localStorage.getItem('clientPlants');
-    if (!clientPlants)
-      return localStorage.setItem('clientPlants', JSON.stringify([plant.id]));
-
-    const storedData = [...JSON.parse(clientPlants)];
-
-    if (storedData.find((storedId) => storedId == plant.id)) {
-      console.log('This plant was already added in the storage');
-      return;
-    }
-
-    localStorage.setItem(
-      'clientPlants',
-      JSON.stringify([...storedData, plant.id]),
-    );
-  }
+  const { addPlant, storedPlants } = useContext(savesContext);
 
   return (
     <ul className="-mx-3 mb-20 flex flex-wrap">
@@ -33,7 +19,7 @@ export function PlantsList({
         return (
           <li
             key={i}
-            className="list-none p-2 xs:w-1/2 md:w-1/3 md:p-3 xl:w-1/4 xl:p-4"
+            className={`list-none p-2 xs:w-1/2 md:w-1/3 md:p-3 xl:w-1/4 xl:p-4 ${storedPlants.includes(plant) ? 'opacity-50' : ''}`}
           >
             <PlantCard
               className="h-full"
@@ -41,7 +27,7 @@ export function PlantsList({
               image={image}
               tags={tags}
               highlight={highlight}
-              onClick={() => saveClientPlant(plant)}
+              onClick={() => addPlant(plant)}
             />
           </li>
         );

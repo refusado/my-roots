@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { Preferences } from './Preferences';
 import { UserSaves } from './UserSaves';
 import { Explorer } from '@/components/plants/Explorer';
+import { SavesContextProvider } from './saves-context';
 
 export default function Explore() {
   const [filters, setFilters] = useState<OnboardResponses | null>(null);
@@ -35,25 +36,27 @@ export default function Explore() {
 
   return (
     <div className="container flex bg-white">
-      <main className="w-full">
-        <h1 className="my-8 bg-yellow-500 font-serif text-5xl">
-          Escolha a sua próxima contribuição contra o impacto das crises
-          climáticas
-        </h1>
-        <section className="bg-red-500">
-          <Preferences
-            filters={filters}
-            clearPreferences={clearPreferences}
-            userTags={userTags}
-          />
+      <SavesContextProvider>
+        <main className="w-full">
+          <h1 className="my-8 bg-yellow-500 font-serif text-5xl">
+            Escolha a sua próxima contribuição contra o impacto das crises
+            climáticas
+          </h1>
+          <section className="bg-red-500">
+            <Preferences
+              filters={filters}
+              clearPreferences={clearPreferences}
+              userTags={userTags}
+            />
+          </section>
+          <section className="bg-blue-500">
+            <Explorer userTags={userTags} />
+          </section>
+        </main>
+        <section className="h-screen w-4/12 bg-purple-500">
+          <UserSaves />
         </section>
-        <section className="bg-blue-500">
-          <Explorer userTags={userTags} />
-        </section>
-      </main>
-      <section className="h-screen w-4/12 bg-purple-500">
-        <UserSaves />
-      </section>
+      </SavesContextProvider>
     </div>
   );
 }
