@@ -1,4 +1,5 @@
 import { twMerge } from 'tailwind-merge';
+import { useMouseTracker } from '../MouseTracker';
 
 type PlantCardProps = {
   name: string;
@@ -20,8 +21,12 @@ export function PlantCard({
   highlight = false,
   onClick,
 }: PlantCardProps) {
+  const { increase, decrease } = useMouseTracker();
+
   return (
     <button
+      onMouseEnter={increase}
+      onMouseLeave={decrease}
       onClick={onClick}
       className={twMerge(
         'relative flex flex-col rounded-2xl border border-white/20 p-3 text-start',

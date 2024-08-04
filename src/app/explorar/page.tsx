@@ -9,12 +9,14 @@ import { Explorer } from '@/components/plants/Explorer';
 import { SavesContextProvider } from './saves-context';
 import { TbPlant2 } from 'react-icons/tb';
 import { CgClose } from 'react-icons/cg';
+import { useMouseTracker } from '@/components/MouseTracker';
 
 export default function Explore() {
   const [filters, setFilters] = useState<OnboardResponses | null>(null);
   const [userTags, setUserTags] = useState<string[]>([]);
   const [isMobile, setIsMobile] = useState(false);
   const [isAsideActive, setIsAsideActive] = useState(false);
+  const { setSmallBg, setFilter, setBackground } = useMouseTracker();
 
   useEffect(() => {
     const clientFilters = localStorage.getItem('clientFilters');
@@ -47,7 +49,13 @@ export default function Explore() {
   }
 
   return (
-    <div className={'container flex overflow-x-hidden py-28'}>
+    <div
+      onMouseEnter={() => {
+        setSmallBg('black');
+        setBackground('');
+      }}
+      className={'container flex overflow-x-hidden py-28'}
+    >
       <SavesContextProvider>
         <main className="w-full">
           <h1 className="mb-8 font-serif text-5xl text-amber-950">
@@ -66,7 +74,11 @@ export default function Explore() {
           </section>
         </main>
         {!isMobile || (isMobile && isAsideActive) ? (
-          <section className="fixed inset-0 z-10 min-h-screen overflow-y-auto bg-black/80 px-4 py-28 lg:static lg:w-4/12 lg:overflow-y-visible lg:bg-transparent lg:p-0">
+          <section
+            onMouseEnter={() => setFilter('invert(150%)')}
+            onMouseLeave={() => setFilter('brightness(1.25)')}
+            className="fixed inset-0 z-10 min-h-screen overflow-y-auto bg-black/80 px-4 py-28 lg:static lg:w-4/12 lg:overflow-y-visible lg:bg-transparent lg:p-0"
+          >
             <aside className="w-full rounded-3xl border-2 border-green-900/20 bg-grass4 py-20 shadow-xl lg:-mt-20 lg:rounded-[9999px_9999px_75rem_75rem] lg:py-40">
               <UserImpact />
             </aside>

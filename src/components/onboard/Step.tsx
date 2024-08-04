@@ -6,6 +6,7 @@ import { OnboardOptions } from './Options';
 import { CgArrowTopRight } from 'react-icons/cg';
 import { RiArrowRightDoubleFill } from 'react-icons/ri';
 import { BsArrowUpRight } from 'react-icons/bs';
+import { useMouseTracker } from '../MouseTracker';
 
 interface StepProps extends Partial<StepWizardChildProps> {
   questionIndex: number;
@@ -53,6 +54,7 @@ export function Step({
 }
 
 function FirstStep({ nextStep }: { nextStep: () => void }) {
+  const { increase, decrease } = useMouseTracker();
   return (
     <>
       <h2 className="mb-4 text-3xl">
@@ -64,7 +66,12 @@ function FirstStep({ nextStep }: { nextStep: () => void }) {
       </p>
       <img src="search.svg" alt="Searching items" className="mb-12 max-w-xs" />
       <button
-        onClick={nextStep}
+        onMouseEnter={increase}
+        onMouseLeave={decrease}
+        onClick={() => {
+          nextStep();
+          decrease();
+        }}
         className="group relative ml-16 inline-block w-fit rounded-r-full bg-green-500/80 px-8 py-2 text-center text-lg font-medium shadow-md shadow-green-400/50 duration-200 hover:brightness-110"
       >
         <span className="absolute right-full top-0 h-full w-screen bg-inherit shadow-md shadow-green-400/50"></span>
@@ -76,6 +83,7 @@ function FirstStep({ nextStep }: { nextStep: () => void }) {
 }
 
 function LastStep({ previousStep }: { previousStep: () => void }) {
+  const { increase, decrease, setFilter } = useMouseTracker();
   return (
     <>
       <h2 className="mb-4 text-3xl">Tudo pronto, já te conhecemos!</h2>
@@ -89,6 +97,12 @@ function LastStep({ previousStep }: { previousStep: () => void }) {
         className="mb-12 max-w-sm opacity-90"
       />
       <Link
+        onMouseEnter={increase}
+        onMouseLeave={decrease}
+        onClick={() => {
+          decrease();
+          setFilter('brightness(1.25)');
+        }}
         href="/explorar"
         className="group relative ml-16 inline-block w-fit rounded-r-full bg-green-500/80 px-8 py-2 text-center text-lg font-medium shadow-md shadow-green-400/50 duration-200 hover:brightness-110"
       >
