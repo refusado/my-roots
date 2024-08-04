@@ -4,18 +4,28 @@ import { OnboardResponses } from '@/components/onboard';
 import { questions } from '@/utils/questions';
 import { useEffect, useState } from 'react';
 import { Preferences } from './Preferences';
-import { UserSaves } from './UserSaves';
+import { UserImpact } from './UserImpact';
 import { Explorer } from '@/components/plants/Explorer';
 import { SavesContextProvider } from './saves-context';
+import { TbPlant2 } from 'react-icons/tb';
 
 export default function Explore() {
   const [filters, setFilters] = useState<OnboardResponses | null>(null);
   const [userTags, setUserTags] = useState<string[]>([]);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
+  const [isAsideActive, setIsAsideActive] = useState(false);
 
   useEffect(() => {
     const clientFilters = localStorage.getItem('clientFilters');
 
     if (clientFilters) setFilters(JSON.parse(clientFilters));
+
+    const windowResizeHandler: (this: Window, ev: UIEvent) => void = (e) => {
+      setIsMobile(window.innerWidth <= 1024);
+    };
+
+    window.addEventListener('resize', windowResizeHandler);
+    return () => window.removeEventListener('resize', windowResizeHandler);
   }, []);
 
   useEffect(() => {
@@ -35,10 +45,10 @@ export default function Explore() {
   }
 
   return (
-    <div className="container flex bg-white">
+    <div className={'container flex overflow-x-hidden bg-white py-28'}>
       <SavesContextProvider>
         <main className="w-full">
-          <h1 className="my-8 bg-yellow-500 font-serif text-5xl">
+          <h1 className="mb-8 bg-yellow-500 font-serif text-5xl">
             Escolha a sua próxima contribuição contra o impacto das crises
             climáticas
           </h1>
@@ -53,10 +63,26 @@ export default function Explore() {
             <Explorer userTags={userTags} />
           </section>
         </main>
-        <section className="h-screen w-4/12 bg-purple-500">
-          <UserSaves />
-        </section>
+        {!isMobile || (isMobile && isAsideActive) ? (
+          <section className="fixed inset-0 z-10 min-h-screen overflow-y-auto bg-black/80 px-4 py-28 lg:static lg:w-4/12 lg:bg-transparent lg:p-0">
+            <aside className="min-h-full w-full bg-grass4">
+              <UserImpact />
+            </aside>
+          </section>
+        ) : null}
       </SavesContextProvider>
+      <div className="fixed bottom-6 right-6 z-20 flex items-center gap-4 lg:hidden">
+        <p className="btn-fade flex-center relative bg-white p-3">
+          Confira como está sendo seu impacto ambiental aqui
+          <div className="absolute left-full size-4 -translate-x-1/2 rotate-45 bg-inherit"></div>
+        </p>
+        <button
+          onClick={() => setIsAsideActive(!isAsideActive)}
+          className="flex-center size-20 shrink-0 rounded-full bg-red-500 p-3.5"
+        >
+          <TbPlant2 className="size-full opacity-70" />
+        </button>
+      </div>
     </div>
   );
 }

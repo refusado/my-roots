@@ -28,9 +28,9 @@ export function PlantCard({
         className,
       )}
     >
-      {highlight && (
+      {/* {highlight && (
         <div className="absolute -right-1.5 -top-1.5 size-8 animate-ping rounded-full bg-yellow-500"></div>
-      )}
+      )} */}
       <img
         className="mb-4 block aspect-square w-full rounded-xl object-cover"
         onError={({ currentTarget }) => (currentTarget.src = defaultImage)}

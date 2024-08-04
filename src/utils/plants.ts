@@ -4,10 +4,10 @@ export type Plant = {
   description?: string;
   tags: string[];
   image?: string;
-  cO2absorption: number; // Média de absorção anual de CO2 por anul (kKg)
-  oxygen?: number; // Média de impacto na produção de oxi^genio (Kg)
-  temperature?: number; // Média de impacto na redução da temperatura (°C)
-  humidity?: number; // Média de impacto no aumento da umidade (%)
+  cO2absorption: number; // Média de absorção anual de CO2 por ano (Kg)
+  oxygen: number; // Média de produção de oxigênio por ano (Kg)
+  temperature: number; // Média de impacto na redução da temperatura (°C)
+  humidity: number; // Média de impacto no aumento da umidade (%)
 };
 
 export const plants: Plant[] = [
@@ -19,6 +19,9 @@ export const plants: Plant[] = [
     tags: ['interno', 'luz indireta a alta', 'quente', 'cuidado semanal'],
     image: 'https://m.media-amazon.com/images/I/71UvcN6ET8L._AC_SX679_.jpg',
     cO2absorption: 0.3,
+    oxygen: 0.2,
+    temperature: 0.5,
+    humidity: 5,
   },
   {
     id: '1',
@@ -29,6 +32,9 @@ export const plants: Plant[] = [
     image:
       'https://m.media-amazon.com/images/I/71x311i9AWL._AC_UF1000,1000_QL80_.jpg',
     cO2absorption: 0.2,
+    oxygen: 0.15,
+    temperature: 0.3,
+    humidity: 3,
   },
   {
     id: '2',
@@ -39,6 +45,9 @@ export const plants: Plant[] = [
     image:
       'https://m.media-amazon.com/images/I/71x311i9AWL._AC_UF1000,1000_QL80_.jpg',
     cO2absorption: 0.1,
+    oxygen: 0.1,
+    temperature: 0.2,
+    humidity: 1,
   },
   {
     id: '3',
@@ -49,6 +58,9 @@ export const plants: Plant[] = [
     image:
       'https://m.media-amazon.com/images/I/71x311i9AWL._AC_UF1000,1000_QL80_.jpg',
     cO2absorption: 0.4,
+    oxygen: 0.3,
+    temperature: 0.7,
+    humidity: 10,
   },
   {
     id: '4',
@@ -59,6 +71,9 @@ export const plants: Plant[] = [
     image:
       'https://m.media-amazon.com/images/I/71x311i9AWL._AC_UF1000,1000_QL80_.jpg',
     cO2absorption: 0.3,
+    oxygen: 0.25,
+    temperature: 0.5,
+    humidity: 2,
   },
   {
     id: '5',
@@ -69,6 +84,9 @@ export const plants: Plant[] = [
     image:
       'https://m.media-amazon.com/images/I/71x311i9AWL._AC_UF1000,1000_QL80_.jpg',
     cO2absorption: 0.2,
+    oxygen: 0.2,
+    temperature: 0.4,
+    humidity: 7,
   },
   {
     id: '6',
@@ -79,6 +97,9 @@ export const plants: Plant[] = [
     image:
       'https://m.media-amazon.com/images/I/71x311i9AWL._AC_UF1000,1000_QL80_.jpg',
     cO2absorption: 0.1,
+    oxygen: 0.1,
+    temperature: 0.2,
+    humidity: 1,
   },
   {
     id: '7',
@@ -89,5 +110,8 @@ export const plants: Plant[] = [
     image:
       'https://m.media-amazon.com/images/I/71x311i9AWL._AC_UF1000,1000_QL80_.jpg',
     cO2absorption: 0.2,
+    oxygen: 0.15,
+    temperature: 0.4,
+    humidity: 5,
   },
 ];

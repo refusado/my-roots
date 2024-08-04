@@ -16,3 +16,23 @@
     align-items: center;
   }
 }
+
+.btn-fade {
+  animation: fade-out forwards 7000ms 
+}
+
+@keyframes fade-out {
+  0%, 80% {
+    opacity: 100
+  }
+  99.9% {
+    opacity: 0;
+    width: auto;
+    height: auto;
+  }
+  100% {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+}
