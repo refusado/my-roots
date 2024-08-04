@@ -65,7 +65,7 @@ function FirstStep({ nextStep }: { nextStep: () => void }) {
       <img src="search.svg" alt="Searching items" className="mb-12 max-w-xs" />
       <button
         onClick={nextStep}
-        className="group relative inline-block w-fit rounded-r-full bg-green-500/80 px-8 py-2 text-center text-lg font-medium shadow-md shadow-green-400/50 duration-200 hover:brightness-110"
+        className="group relative ml-16 inline-block w-fit rounded-r-full bg-green-500/80 px-8 py-2 text-center text-lg font-medium shadow-md shadow-green-400/50 duration-200 hover:brightness-110"
       >
         <span className="absolute right-full top-0 h-full w-screen bg-inherit shadow-md shadow-green-400/50"></span>
         Começar
@@ -90,7 +90,7 @@ function LastStep({ previousStep }: { previousStep: () => void }) {
       />
       <Link
         href="/explorar"
-        className="group relative inline-block w-fit rounded-r-full bg-green-500/80 px-8 py-2 text-center text-lg font-medium shadow-md shadow-green-400/50 duration-200 hover:brightness-110"
+        className="group relative ml-16 inline-block w-fit rounded-r-full bg-green-500/80 px-8 py-2 text-center text-lg font-medium shadow-md shadow-green-400/50 duration-200 hover:brightness-110"
       >
         <span className="absolute right-full top-0 h-full w-screen bg-inherit shadow-md shadow-green-400/50"></span>
         Explorar{' '}

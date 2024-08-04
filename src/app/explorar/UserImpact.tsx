@@ -41,7 +41,7 @@ export function UserImpact() {
   if (!storedPlants.length)
     return (
       <div className="text-center">
-        <h2 className="mx-4 py-32 text-2xl">
+        <h2 className="mx-4 py-32 text-xl">
           Selecione as suas plantas para descobrir qual está sendo o seu impacto
           no meio ambiente
         </h2>
@@ -58,9 +58,9 @@ export function UserImpact() {
   }) {
     return (
       <div>
-        <h4 className="font-bold">{title}</h4>
+        <h4 className="mb-2 text-sm font-bold text-dark-grass3">{title}</h4>
         <p className="flex items-end justify-between">
-          <span className="text-sm">Aproximadamente</span>
+          <span className="text-sm opacity-60">Aproximadamente</span>
           <span className="text-4xl font-light">{children}</span>
         </p>
       </div>
@@ -68,34 +68,41 @@ export function UserImpact() {
   }
 
   return (
-    <div className="text-end">
-      <h2 className="py-10 pl-10 text-2xl font-medium">
-        Acompanhe o seu impacto no meio ambiente
+    <div className="px-4 text-end">
+      <h2 className="mb-12 text-2xl font-medium lg:py-6">
+        <span className="bg-amber-800/5">
+          Acompanhe o seu impacto no meio ambiente
+        </span>
       </h2>
-      <section className="mb-10 flex flex-col gap-8 bg-pink-500">
+      <section className="mb-16 flex flex-col gap-8">
         <DisplayInfo title="Gás carbônico absorvido">
-          {impactData.cO2.toFixed(2)}Kg / ano
+          {impactData.cO2.toFixed(2)}Kg<span className="text-xl">/ ano</span>
         </DisplayInfo>
         <DisplayInfo title="Oxigênio produzido">
-          {impactData.oxygen.toFixed(2)}Kg / ano
+          {impactData.oxygen.toFixed(2)}Kg
+          <span className="text-xl">/ ano</span>
         </DisplayInfo>
         <DisplayInfo title="Temperatura ambiente">
-          {impactData.temperature.toFixed(2)}ºC
+          {impactData.temperature > 0 ? '-' : ''}
+          {impactData.temperature.toFixed(2)}
+          <span className="text-2xl">ºC</span>
         </DisplayInfo>
-        <DisplayInfo title="Umidade">
-          {impactData.humidity.toFixed(2)}%
+        <DisplayInfo title="Umidade do ar">
+          {impactData.humidity > 0 ? '+' : ''}
+          {impactData.humidity.toFixed(2)}
+          <span className="text-2xl">%</span>
         </DisplayInfo>
       </section>
       <section className="text-center">
         <h3 className="text-lg font-bold">Plantas selecionadas</h3>
-        <p className="text-sm">Clique para remover</p>
-        <ul className="flex flex-col gap-4 p-2">
+        <p className="mb-6 text-xs opacity-80">(Clique nela para remover)</p>
+        <ul className="flex flex-col gap-4">
           {storedPlants.map((plant) => {
             const { id, name, description } = plant;
             return (
               <li className="text-sm" key={id}>
                 <button
-                  className="bg-blue-500 text-start"
+                  className="rounded-xl border border-amber-900/20 bg-green-800/10 p-3 text-start shadow-md shadow-green-900/10 duration-200 hover:shadow-green-900/20"
                   onClick={() => removePlant(plant)}
                 >
                   <h4 className="font-bold">{name}</h4>

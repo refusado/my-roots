@@ -2,8 +2,8 @@ import { HiOutlineExternalLink } from 'react-icons/hi';
 
 export function Footer() {
   return (
-    <header className="relative z-10 bg-green-700 text-grass3">
-      <div className="container flex items-center justify-between py-10">
+    <header className="relative z-10 bg-green-900 text-grass3">
+      <div className="container flex flex-wrap items-center justify-between gap-4 py-10">
         <p className="flex gap-4 py-1 *:inline-flex *:items-center *:gap-2">
           <a
             href="https://github.com/refusado/my-roots"
@@ -22,7 +22,16 @@ export function Footer() {
             <HiOutlineExternalLink />
           </a>
         </p>
-        <p>Hackathon Fernanda Kipper | Conexão Dev, Refu &copy; 2024</p>
+        <p>
+          <a
+            href="https://github.com/Fernanda-Kipper/hackathon-2024"
+            className="hover:underline"
+          >
+            Hackathon KipperDev
+            <HiOutlineExternalLink className="ml-2 inline" />
+          </a>
+          <span className="mx-4">|</span> Refu &copy; 2024
+        </p>
       </div>
     </header>
   );

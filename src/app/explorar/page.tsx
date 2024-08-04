@@ -8,6 +8,7 @@ import { UserImpact } from './UserImpact';
 import { Explorer } from '@/components/plants/Explorer';
 import { SavesContextProvider } from './saves-context';
 import { TbPlant2 } from 'react-icons/tb';
+import { CgClose } from 'react-icons/cg';
 
 export default function Explore() {
   const [filters, setFilters] = useState<OnboardResponses | null>(null);
@@ -46,42 +47,46 @@ export default function Explore() {
   }
 
   return (
-    <div className={'container flex overflow-x-hidden bg-white py-28'}>
+    <div className={'container flex overflow-x-hidden py-28'}>
       <SavesContextProvider>
         <main className="w-full">
-          <h1 className="mb-8 bg-yellow-500 font-serif text-5xl">
+          <h1 className="mb-8 font-serif text-5xl text-amber-950">
             Escolha a sua próxima contribuição contra o impacto das crises
             climáticas
           </h1>
-          <section className="bg-red-500">
+          <section className="">
             <Preferences
               filters={filters}
               clearPreferences={clearPreferences}
               userTags={userTags}
             />
           </section>
-          <section className="bg-blue-500">
+          <section className="">
             <Explorer userTags={userTags} />
           </section>
         </main>
         {!isMobile || (isMobile && isAsideActive) ? (
-          <section className="fixed inset-0 z-10 min-h-screen overflow-y-auto bg-black/80 px-4 py-28 lg:static lg:w-4/12 lg:bg-transparent lg:p-0">
-            <aside className="min-h-full w-full bg-grass4">
+          <section className="fixed inset-0 z-10 min-h-screen overflow-y-auto bg-black/80 px-4 py-28 lg:static lg:w-4/12 lg:overflow-y-visible lg:bg-transparent lg:p-0">
+            <aside className="w-full rounded-3xl border-2 border-green-900/20 bg-grass4 py-20 shadow-xl lg:-mt-20 lg:rounded-[9999px_9999px_75rem_75rem] lg:py-40">
               <UserImpact />
             </aside>
           </section>
         ) : null}
       </SavesContextProvider>
       <div className="fixed bottom-6 right-6 z-20 flex items-center gap-4 lg:hidden">
-        <p className="btn-fade flex-center relative bg-white p-3">
+        <p className="btn-fade flex-center relative ml-3 rounded-full bg-white p-3 shadow-md">
           Confira como está sendo seu impacto ambiental aqui
-          <span className="absolute left-full size-4 -translate-x-1/2 rotate-45 bg-inherit"></span>
+          <span className="absolute left-full -z-10 size-7 -translate-x-6 rotate-45 rounded-lg bg-inherit shadow-md"></span>
         </p>
         <button
           onClick={() => setIsAsideActive(!isAsideActive)}
-          className="flex-center size-20 shrink-0 rounded-full bg-red-500 p-3.5"
+          className="flex-center size-16 shrink-0 rounded-full bg-green-500 p-2.5 shadow-lg"
         >
-          <TbPlant2 className="size-full opacity-70" />
+          {isAsideActive ? (
+            <CgClose className="m-0.5 size-full opacity-70" />
+          ) : (
+            <TbPlant2 className="size-full opacity-70" />
+          )}
         </button>
       </div>
     </div>

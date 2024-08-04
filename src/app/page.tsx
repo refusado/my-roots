@@ -18,7 +18,7 @@ export default function Home() {
             no combate ao aquecimento global?
           </h1>
           <p className="w-fit max-w-2xl text-lg">
-            <span className="block rounded-full bg-green-950/60">
+            <span className="block rounded-full bg-amber-950/30">
               Diminua o impacto das crises climáticas tornando o mundo mais
               verde!
             </span>
@@ -40,7 +40,7 @@ export default function Home() {
         <img
           src="./lines.svg"
           alt="lines"
-          className="absolute bottom-0 right-0 block h-4/6 w-4/6 opacity-50"
+          className="absolute bottom-0 right-0 block h-96 w-4/6 opacity-30"
         />
         <Onboard />
       </section>
