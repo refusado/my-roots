@@ -1,6 +1,6 @@
 export function Footer() {
   return (
-    <header className="bg-grass11 text-grass3 relative z-10">
+    <header className="relative z-10 bg-grass11 text-grass3">
       <div className="container flex items-center justify-between py-10">
         <p className="flex gap-4 py-1 *:inline-block">
           <a
