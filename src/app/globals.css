@@ -21,6 +21,10 @@
   animation: fade-out forwards 7000ms 
 }
 
+.hero-fade {
+  animation: fade-in forwards 1000ms 
+}
+
 @keyframes fade-out {
   0%, 80% {
     opacity: 100
@@ -34,5 +38,15 @@
     width: 0;
     height: 0;
     opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0
+  }
+
+  100% {
+    opacity: 100
   }
 }
