@@ -12,11 +12,12 @@ import { TbPlant2 } from 'react-icons/tb';
 export default function Explore() {
   const [filters, setFilters] = useState<OnboardResponses | null>(null);
   const [userTags, setUserTags] = useState<string[]>([]);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
+  const [isMobile, setIsMobile] = useState(false);
   const [isAsideActive, setIsAsideActive] = useState(false);
 
   useEffect(() => {
     const clientFilters = localStorage.getItem('clientFilters');
+    setIsMobile(window.innerWidth <= 1024);
 
     if (clientFilters) setFilters(JSON.parse(clientFilters));
 
@@ -74,7 +75,7 @@ export default function Explore() {
       <div className="fixed bottom-6 right-6 z-20 flex items-center gap-4 lg:hidden">
         <p className="btn-fade flex-center relative bg-white p-3">
           Confira como está sendo seu impacto ambiental aqui
-          <div className="absolute left-full size-4 -translate-x-1/2 rotate-45 bg-inherit"></div>
+          <span className="absolute left-full size-4 -translate-x-1/2 rotate-45 bg-inherit"></span>
         </p>
         <button
           onClick={() => setIsAsideActive(!isAsideActive)}
