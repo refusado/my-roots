@@ -55,10 +55,23 @@ export default function Explore() {
       <div className="container flex overflow-x-hidden px-2 py-16 md:py-28">
         <SavesContextProvider>
           <main className="w-full px-2 md:mr-8">
-            <h1 className="mb-12 font-serif text-3xl text-amber-950 md:text-5xl">
+            <motion.h1
+              initial={{
+                y: 15,
+                opacity: 0,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 0.5,
+                },
+              }}
+              className="mb-12 font-serif text-3xl text-amber-950 md:text-5xl"
+            >
               Escolha a sua próxima contribuição contra o impacto das crises
               climáticas
-            </h1>
+            </motion.h1>
             <section className="mb-18">
               <Preferences
                 filters={filters}
@@ -96,10 +109,23 @@ export default function Explore() {
           </AnimatePresence>
         </SavesContextProvider>
         <div className="fixed bottom-6 right-6 z-20 flex items-center gap-4 lg:hidden">
-          <p className="btn-fade flex-center relative ml-3 rounded-full bg-white p-3 shadow-md">
+          <motion.p
+            initial={{
+              opacity: 0,
+              y: 10,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              transition: {
+                duration: 0.5,
+              },
+            }}
+            className="btn-fade flex-center relative ml-3 rounded-full bg-white p-3 shadow-md"
+          >
             Confira como está sendo seu impacto ambiental aqui
             <span className="absolute left-full -z-10 size-7 -translate-x-6 rotate-45 rounded-lg bg-inherit shadow-md"></span>
-          </p>
+          </motion.p>
           <button
             onClick={() => setIsAsideActive(!isAsideActive)}
             className="flex-center size-16 shrink-0 rounded-full bg-green-500 p-2.5 shadow-lg"

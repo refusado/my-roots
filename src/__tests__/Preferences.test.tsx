@@ -11,7 +11,7 @@ describe('Preferences Component', () => {
       <Preferences filters={null} clearPreferences={() => {}} userTags={[]} />,
     );
 
-    expect(screen.getByText('Complete o onboarding aqui')).toBeDefined();
+    expect(screen.getByTestId('RedirectToOnboard')).toBeDefined();
   });
 
   it('should display correct user tags based on the selected preferences', () => {

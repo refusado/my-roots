@@ -81,7 +81,7 @@ export function MouseTrackerProvider({ children }: { children: ReactNode }) {
       {width > 992 && (
         <>
           <motion.div
-            className="pointer-events-none fixed left-0 top-0 z-10 rounded-full"
+            className="pointer-events-none fixed left-0 top-0 z-10 rounded-full transition-colors duration-200"
             style={{
               zIndex,
               position: 'fixed',

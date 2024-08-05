@@ -6,7 +6,7 @@ import { useMouseTracker } from './MouseTracker';
 
 export function Header() {
   const currentPath = usePathname();
-  const { increase, decrease, setFilter } = useMouseTracker();
+  const { increase, decrease } = useMouseTracker();
 
   const paths = [
     { title: 'início', path: '/' },
@@ -15,18 +15,12 @@ export function Header() {
 
   return (
     <header
-      onMouseEnter={() => {
-        increase();
-        // setFilter('invert(100%)');
-      }}
-      onMouseLeave={() => {
-        decrease();
-        // setFilter('brightness(1.25)');
-      }}
+      onMouseEnter={increase}
+      onMouseLeave={decrease}
       className="relative z-10 px-4 pt-6"
     >
       <nav
-        className={`mx-auto mt-1 block w-full overflow-hidden rounded-full border-[1px] border-amber-200/20 sm:max-w-sm ${currentPath == '/explorar' ? 'bg-amber-950/40' : ''}`}
+        className={`mx-auto mt-1 block w-full overflow-hidden rounded-full border-[1px] sm:max-w-sm ${currentPath == '/explorar' ? 'border-green-800 bg-amber-950/30' : 'border-amber-200/20'}`}
       >
         <ul className="flex flex-wrap *:flex-1 *:text-center">
           {paths.map(({ title, path }, i) => (

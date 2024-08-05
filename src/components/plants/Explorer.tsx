@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { PlantsList } from './List';
 import { type Plant, plants } from '@/utils/plants';
 
+const MAX_RECOMMENDATIONS = 8;
+
 export function Explorer({ userTags }: { userTags: string[] }) {
   const [recommendedPlants, setRecommendedPlants] = useState<Plant[]>([]);
   const [notRecommendedPlants, setNotRecommendedPlants] = useState<Plant[]>([]);
@@ -14,12 +16,13 @@ export function Explorer({ userTags }: { userTags: string[] }) {
       return;
     }
 
-    plants.forEach((plant) => {
+    plants.forEach((plant, i) => {
       let match = false;
 
-      plant.tags.forEach((tag) => {
-        if (userTags.includes(tag)) match = true;
-      });
+      if (i <= MAX_RECOMMENDATIONS)
+        plant.tags.forEach((tag) => {
+          if (userTags.includes(tag)) match = true;
+        });
 
       if (match) {
         setRecommendedPlants((prev) => [...prev, plant]);

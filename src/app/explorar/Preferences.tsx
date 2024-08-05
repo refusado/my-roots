@@ -1,4 +1,5 @@
 import { OnboardResponses } from '@/components/onboard';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { CgClose } from 'react-icons/cg';
 
@@ -40,12 +41,27 @@ export function Preferences({
 
 export function RedirectToOnboard() {
   return (
-    <p className="mb-8 max-w-2xl text-lg">
+    <motion.p
+      initial={{
+        opacity: 0,
+        y: 10,
+      }}
+      animate={{
+        opacity: 1,
+        y: 0,
+        transition: {
+          delay: 0.25,
+          duration: 0.5,
+        },
+      }}
+      data-testid="RedirectToOnboard"
+      className="mb-8 max-w-2xl text-lg"
+    >
       Precisa de ajuda? Saiba exatamente quais são as plantas perfeitas para
       você{' '}
       <Link href="/#onboard" className="text-green-700 hover:underline">
         respondendo este questionário rápido
       </Link>
-    </p>
+    </motion.p>
   );
 }
