@@ -1,17 +1,21 @@
 export function getTotalTemperatureImpact(temperatureValues: number[]): number {
-  const totalImpact = temperatureValues.reduce((total, value, i) => {
-    return total + value * Math.exp(-0.7315 * temperatureValues.length);
-  }, 0);
+  let result = 0;
 
-  return totalImpact;
+  temperatureValues.sort((a, b) => a - b);
+  temperatureValues.forEach(
+    (value, i) => (result += value * Math.pow(0.793, i)),
+  );
+
+  return result;
 }
 
 export function getTotalHumidityImpact(humidityValues: number[]): number {
-  const totalImpact = humidityValues.reduce((total, value, i) => {
-    return total + value * Math.exp(-0.5892 * humidityValues.length);
-  }, 0);
+  let result = 0;
 
-  return totalImpact;
+  humidityValues.sort((a, b) => a - b);
+  humidityValues.forEach((value, i) => (result += value * Math.pow(0.903, i)));
+
+  return result;
 }
 
 export function getTotalCO2Impact(cO2Values: number[]): number {
